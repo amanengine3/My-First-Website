@@ -1,0 +1,776 @@
+<!-- Main navigation -->
+    <!DOCTYPE html>
+    <html>
+    <head> 
+        <title>Aman Mandal</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
+        <script>
+            var TxtRotate = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 20;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+      };
+      
+      TxtRotate.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+      
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+      
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+      
+        var that = this;
+        var delta = 300 - Math.random() * 100;
+      
+        if (this.isDeleting) { delta /= 2; }
+      
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 500;
+        }
+      
+        setTimeout(function() {
+          that.tick();
+        }, delta);
+      };
+      
+      window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i=0; i<elements.length; i++) {
+          var toRotate = elements[i].getAttribute('data-rotate');
+          var period = elements[i].getAttribute('data-period');
+          if (toRotate) {
+            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+        document.body.appendChild(css);
+      };
+        </script>
+    </head>
+    <body>
+        <style type="text/css">
+
+            /* Required for full background image */
+
+            html,
+            body,
+            header,
+            #intro-section {
+                height: 100%;
+            }
+
+            @media (max-width: 740px) {
+                html,
+                body,
+                header,
+                #intro-section {
+                    height: 100vh;
+                }
+            }
+
+            .top-nav-collapse, .page-footer {
+                background-color:  #2f3542 !important;
+            }
+
+            .navbar:not(.top-nav-collapse) {
+                background: transparent !important;
+            }
+
+            @media (max-width: 991px) {
+                .navbar:not(.top-nav-collapse) {
+                    background:  #2f3542 !important;
+                }
+            }
+
+            .rgba-gradient {
+                background: rgba(35, 7, 77, 0.6);
+                /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6));
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, rgba(204, 83, 51, 0.6), rgba(35, 7, 77, 0.6));
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+
+
+            .img-gradient:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(220, 66, 37, 0.5)), color-stop(100%, rgba(0, 47, 75, 0.5)));
+                /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+                /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+                /* Opera 11.10+ */
+                /* IE10+ */
+                background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 47, 75, 0.5)), to(rgba(220, 66, 37, 0.5)));
+                background: linear-gradient(to bottom, rgba(0, 47, 75, 0.5) 0%, rgba(220, 66, 37, 0.5) 100%);
+                /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000', GradientType=0);
+                /* IE6-9 */
+            }
+
+            img{ max-width:100%;}
+
+.gallery_box li{ width:33.333333%; max-width: 100% ; display:inline-block; float: left; text-align: center; overflow: hidden;    position: relative;}
+.gallery_box{ padding:0;display: flow-root;}
+
+.gallery_box li:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.gallery_box li img{-webkit-transition: transform 0.5s ease;
+    -o-transition: transform 0.5s ease;
+    transition: transform 0.5s ease;}
+.gallery_box li:nth-child(even) {
+    height: 304px;
+}
+.gallery_box li:nth-child(odd) {
+    height: 438px; 
+}
+.gallery_box li:nth-child(odd) .box_data{ background:rgba(0,0,0,0.17) }
+.gallery_box li:nth-child(even) .box_data{ background:rgba(0,44,255,0.27) }
+.gallery_box .box_data{ position:absolute; top: 0; left: 0; right:0; bottom:0; color:#fff;}
+.gallery_box .box_data span{ position:absolute; top: 50%; transform: translateY(-50%); left:0 ; right:0; font-size:24px;}
+.gallery_box li:hover .box_data{ background:rgba(255,0,39,0.55)}
+
+.fa {
+  padding: 8px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  
+  color: white;
+}
+
+.fa-github {
+  
+  color: white;
+}
+
+
+
+.fa-linkedin {
+ 
+  color: white;
+}
+
+.fa-youtube {
+  
+  color: white;
+}
+
+.fa-instagram {
+  
+  color: white;
+}
+
+
+.contact-info{
+  display: inline-flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+
+.card{
+  background: #2f3542;
+  padding: 0 20px;
+  margin: 0 10px;
+  width: calc(33% - 20px);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card-icon{
+  font-size: 28px;
+  background: #ff6348;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px !important;
+  border-radius: 50%;
+  transition: 0.3s linear;
+}
+
+.card:hover .card-icon{
+  background: none;
+  color: #ff6348;
+  transform: scale(1.6);
+}
+
+.card p{
+  margin-top: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  max-height: 0;
+  opacity: 0;
+  transition: 0.3s linear;
+}
+
+.card:hover p{
+  max-height: 40px;
+  opacity: 1;
+}
+
+
+
+
+        </style>
+        <header>
+             <section id="sam">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+                <div class="container">
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto smooth-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sam" >Home</a>
+                       </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects" data-offset="90">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#gallery" data-offset="90">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonials" data-offset="30">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="snake_game.html" data-offset="90">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index2.html" data-offset="90">Hobbies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact" data-offset="90">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-nav" style="color: #eee;">
+                        <div class="list-unstyled list-inline text-center" >
+                        Made with <i  class="fas fa-heart" style="color: red;" > </i> by Aman
+                    </div>
+                </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+        <!-- Full Page Intro -->
+        <style>
+            body{
+                background-color: #ee5522;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3CradialGradient id='a' gradientUnits='objectBoundingBox'%3E%3Cstop offset='0' stop-color='%23FB3'/%3E%3Cstop offset='1' stop-color='%23ee5522'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='750' x2='1550' y2='750'%3E%3Cstop offset='0' stop-color='%23f7882b'/%3E%3Cstop offset='1' stop-color='%23ee5522'/%3E%3C/linearGradient%3E%3Cpath id='s' fill='url(%23b)' d='M1549.2 51.6c-5.4 99.1-20.2 197.6-44.2 293.6c-24.1 96-57.4 189.4-99.3 278.6c-41.9 89.2-92.4 174.1-150.3 253.3c-58 79.2-123.4 152.6-195.1 219c-71.7 66.4-149.6 125.8-232.2 177.2c-82.7 51.4-170.1 94.7-260.7 129.1c-90.6 34.4-184.4 60-279.5 76.3C192.6 1495 96.1 1502 0 1500c96.1-2.1 191.8-13.3 285.4-33.6c93.6-20.2 185-49.5 272.5-87.2c87.6-37.7 171.3-83.8 249.6-137.3c78.4-53.5 151.5-114.5 217.9-181.7c66.5-67.2 126.4-140.7 178.6-218.9c52.3-78.3 96.9-161.4 133-247.9c36.1-86.5 63.8-176.2 82.6-267.6c18.8-91.4 28.6-184.4 29.6-277.4c0.3-27.6 23.2-48.7 50.8-48.4s49.5 21.8 49.2 49.5c0 0.7 0 1.3-0.1 2L1549.2 51.6z'/%3E%3Cg id='g'%3E%3Cuse href='%23s' transform='scale(0.12) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.2) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.25) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(0.3) rotate(-20)'/%3E%3Cuse href='%23s' transform='scale(0.4) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(0.5) rotate(20)'/%3E%3Cuse href='%23s' transform='scale(0.6) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.7) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.835) rotate(-40)'/%3E%3Cuse href='%23s' transform='scale(0.9) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(1.05) rotate(25)'/%3E%3Cuse href='%23s' transform='scale(1.2) rotate(8)'/%3E%3Cuse href='%23s' transform='scale(1.333) rotate(-60)'/%3E%3Cuse href='%23s' transform='scale(1.45) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(1.6) rotate(10)'/%3E%3C/g%3E%3C/defs%3E%3Cg transform='rotate(0 0 0)'%3E%3Cg transform='rotate(0 0 0)'%3E%3Ccircle fill='url(%23a)' r='3000'/%3E%3Cg opacity='0.5'%3E%3Ccircle fill='url(%23a)' r='2000'/%3E%3Ccircle fill='url(%23a)' r='1800'/%3E%3Ccircle fill='url(%23a)' r='1700'/%3E%3Ccircle fill='url(%23a)' r='1651'/%3E%3Ccircle fill='url(%23a)' r='1450'/%3E%3Ccircle fill='url(%23a)' r='1250'/%3E%3Ccircle fill='url(%23a)' r='1175'/%3E%3Ccircle fill='url(%23a)' r='900'/%3E%3Ccircle fill='url(%23a)' r='750'/%3E%3Ccircle fill='url(%23a)' r='500'/%3E%3Ccircle fill='url(%23a)' r='380'/%3E%3Ccircle fill='url(%23a)' r='250'/%3E%3C/g%3E%3Cg transform='rotate(0 0 0)'%3E%3Cuse href='%23g' transform='rotate(10)'/%3E%3Cuse href='%23g' transform='rotate(120)'/%3E%3Cuse href='%23g' transform='rotate(240)'/%3E%3C/g%3E%3Ccircle fill-opacity='0.1' fill='url(%23a)' r='3000'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;}
+
+.sw{
+    height:225px;
+    width:225px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+        </style>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <style>
+        h4{
+            font-family: "Times New Roman", Times, serif;
+          }
+        </style>
+            <!-- Mask & flexbox options-->
+            <div class=" d-flex justify-content-center align-items-center">
+                <!-- Content -->
+                <div class="container px-md-3 px-sm-0">
+                    <!--Grid row-->
+                    <div class="row wow fadeIn">
+                        <!--Grid column-->
+                        <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+                            <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Aman Mandal</h3>
+                            <hr class="hr-light my-2 w-75">
+                            <style>
+                            .ram{
+                             font-family: cursive;
+                             padding: 1em 2em;
+                             font-size: 9px;
+                             color: rgb(255, 255, 255);
+                           }
+                           
+                           h1,h2 {
+                             font-weight: 200;
+                             margin: 0.4em 0;
+                           }
+                           h1 { font-size: 3.5em; }
+                           h2 {
+                             color: rgb(255, 254, 254);
+                             font-size: 2em;
+                           }
+                             </style>
+                             <div class="ram">
+                            <h1>I am a
+                                <span
+                                   class="txt-rotate"
+                                   data-period="20"
+                                   data-rotate='[ "Web Developer.", "Design Lover.", "Proud Indian." ]'></span>
+                              </h1>
+                            </div>
+                            <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center">
+            <a href="https://www.facebook.com/aman.mandal.54584/" target="blank" class="fa fa-facebook"></a>
+            </li>
+
+            <li class="list-inline-item">
+                <a href="https://github.com/amanengine3" target="blank" class="fa fa-github"></a>
+                </a>
+            </li>
+            
+            <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/aman-mandal-1b91031a6/" target="blank" class="fa fa-linkedin"></a>
+                
+            </li>
+
+            <li class="list-inline-item">
+                <a href="https://www.youtube.com/channel/UCpJjKNloL_i4Sxr_5XtRyHQ" target="blank" class="fa fa-youtube"></a>
+                
+            </li>
+
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/am_man03/" target="blank" class="fa fa-instagram"></a>
+                
+            </li>
+            </ul>
+                            <!--
+                            <a href="#!" class="btn btn-rounded btn-outline-white">
+                                <i class="fa fa-home"></i> Checkout
+                                -->
+                            </a>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </div>
+                <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+        <!-- Full Page Intro -->
+             </section>
+        
+    </header>
+    
+
+    
+        <!--Section: about-->
+
+        <!--Section: projects-->
+        <section id="projects" class="text-center py-5" style="background-color: #eee;">
+
+            <!-- Container -->
+            <div class="container">
+
+                <!-- Section heading -->
+                <h2 class="h1-responsive font-weight-bold mb-5" style="color:#2f3542">My best projects</h2>
+                <!-- Section description 
+                <p class="grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.</p>
+                -->
+                <!-- Grid row -->
+                <div class="row text-center">
+
+                    <!-- Grid column -->
+                    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                        <!--Featured image-->
+                        <div class="view overlay rounded z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/58.jpg" class="img-fluid" alt="Sample project image">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Excerpt-->
+                        <div class="card-body pb-0">
+                            <h4 class="font-weight-bold my-3">Title of the news</h4>
+                            <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                                necessitatibus saepe eveniet ut et voluptates repudiandae.
+                            </p>
+                            <a class="btn btn-purple btn-sm" href="snake_game.html"></i> View project</a>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+                        <!--Featured image-->
+                        <div class="view overlay rounded z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/project4.jpg" class="img-fluid" alt="Sample project image">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Excerpt-->
+                        <div class="card-body pb-0">
+                            <h4 class="font-weight-bold my-3">Title of the news</h4>
+                            <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                                necessitatibus saepe eveniet ut et voluptates repudiandae.
+                            </p>
+                            <a class="btn btn-purple btn-sm"> View project</a>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-lg-4 col-md-6">
+                        <!--Featured image-->
+                        <div class="view overlay rounded z-depth-1">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/images/88.jpg" class="img-fluid" alt="Sample project image">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Excerpt-->
+                        <div class="card-body pb-0">
+                            <h4 class="font-weight-bold my-3">Title of the news</h4>
+                            <p class="grey-text">Temporibus autem quibusdam et aut officiis debitis aut rerum
+                                necessitatibus saepe eveniet ut et voluptates repudiandae.
+                            </p>
+                            <a class="btn btn-purple btn-sm"> View project</a>
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- Container -->
+
+        </section>
+        <!--Section: projects-->
+
+        <!--Section: gallery-->
+        <section id="gallery" class="text-center py-5">
+
+            <!-- Container -->
+            <div class="container">
+
+                <!-- Section heading -->
+                <h2 class="h1-responsive font-weight-bold mb-5">My Designs</h2>
+                <!-- Section description 
+                <p class="grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit est laborum.</p>
+                -->
+
+                <ul class="gallery_box">
+    <li>
+        <a href="#0"><img src="\assets\images\Android.png">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+        <li>
+        <a href="#0"><img src="\assets\images\SAVE_20200609_213938.jpg">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+        <li>
+        <a href="#0"><img src="assets\images\SAVE_20200428_195902 (1).jpg">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+            <li>
+        <a href="#0"><img src="\assets\images\SAVE_20191212_225351 (1).jpg">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+            <li style="position: relative;
+    top: -134px;">
+        <a href="#0"><img src="\assets\images\SAVE_20200428_195352.jpg">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+            <li>
+        <a href="#0"><img src="\assets\images\SAVE_20200428_195258.jpg">
+        <div class="box_data">
+            <span></span>
+        </div></a>
+    </li>
+
+</ul>
+
+
+</div>
+<!-- Container -->
+
+</section>
+<!--Section: gallery-->
+
+<!--Section: testimonials-->
+<section id="testimonials" class="text-center py-5" style="background-color: #eee;">
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold mb-5" style="color: #2f3542;">About Me</h2>
+
+        <!-- Carousel Wrapper -->
+        <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade"
+        data-ride="carousel" data-interval="false">
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                <div class="testimonial">
+                    <!--Avatar-->
+                    <div class="sw">
+                        <div class="avatar mx-auto mb-4">
+                            <img src="assets/images/PicsArt_05-26-07.18.59-01-01-Recoveredwesite.jpg" class="rounded-circle img-fluid"  alt="First sample avatar image">
+                        </div>
+                    </div>
+                    <!--Content-->
+                    <p>
+                        <i class="fa fa-quote-left"></i> Passionate, inquisitive and curious first-year engineering student with strong technical knowledge and aptitude for solving data and Computer Science problems. I am in the process of learning web development and am looking for projects for the same.
+                    </p>
+                    <h4 class="font-weight-bold">Aman Mandal</h4>
+                    
+                    <h6 class="font-weight-bold my-3">Web Developer, Programmer, Designer</h6>
+                    
+                    <!--Review-->
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star-half-full amber-text"> </i>
+                </div>
+            </div>
+            <!--First slide-->
+            <!--Second slide-->
+            <div class="carousel-item">
+                <div class="testimonial">
+                    <!--Avatar-->
+                    <div class="avatar mx-auto mb-4">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded-circle img-fluid"
+                        alt="Second sample avatar image">
+                    </div>
+                    <!--Content-->
+                    <p>
+                        <i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit
+                        aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                        sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                    incidunt ut labore. </p>
+                    <h4 class="font-weight-bold">Maria Kate</h4>
+                    <h6 class="font-weight-bold my-3">Photographer at Studio LA</h6>
+                    <!--Review-->
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                </div>
+            </div>
+            <!--Second slide-->
+            <!--Third slide-->
+            <div class="carousel-item">
+                <div class="testimonial">
+                    <!--Avatar-->
+                    <div class="avatar mx-auto mb-4">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" class="rounded-circle img-fluid"
+                        alt="Third sample avatar image">
+                    </div>
+                    <!--Content-->
+                    <p>
+                        <i class="fa fa-quote-left"></i> Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                        est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                    accusantium doloremque laudantium.</p>
+                    <h4 class="font-weight-bold">John Doe</h4>
+                    <h6 class="font-weight-bold my-3">Front-end Developer in NY</h6>
+                    <!--Review-->
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star amber-text"> </i>
+                    <i class="fa fa-star-o amber-text"> </i>
+                </div>
+            </div>
+            <!--Third slide-->
+        </div>
+        <!--Slides-->
+        <!--Controls-->
+        <a class="carousel-item-prev left carousel-control" href="#carousel-example-1" role="button"
+        data-slide="prev">
+        <span class="icon-prev" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-item-next right carousel-control" href="#carousel-example-1" role="button"
+    data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+</a>
+<!--Controls-->
+</div>
+<!-- Carousel Wrapper -->
+
+</div>
+<!-- Container -->
+
+</section>
+<!--Section: testimonials-->
+
+
+</section>
+<!--Section: articles-->
+
+<!--Section: contact-->
+<div class="list-unstyled list-inline text-center" >
+
+<section id="contact" class="py-5" >
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold text-center mb-5"></h2>
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto mb-5"></p>
+        
+        <div class="contact-info">
+      <div class="card">
+        <i class="card-icon far fa-envelope"></i>
+        <p>amanengine3@gmail.com</p>
+      </div>
+
+      <div class="card">
+        <i class="card-icon fas fa-phone"></i>
+        <p>+91 9939187082</p>
+      </div>
+
+      <div class="card">
+        <i class="card-icon fas fa-map-marker-alt"></i>
+        <p>VIT Vellore, Tamil Nadu</p>
+      </div>
+        </div>
+    
+    
+</section>
+<!--Section: contact-->
+
+</main>
+<!--Main layout-->
+
+<!-- Footer -->
+<footer class="page-footer font-large pt-4">
+
+    <!-- Footer Elements -->
+    <div class="container">
+
+        <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center">
+            <a class="btn-floating btn-li mx-1" href="https://www.facebook.com/aman.mandal.54584" target="blank">
+                    <i  class="fab fa-facebook" > </i>
+            </li>
+
+            <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-1" href="https://github.com/amanengine3" target="blank">
+                    <i  class="fab fa-github" > </i>
+                </a>
+            </li>
+            
+            <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-1" href="https://www.instagram.com/am_man03/" target="blank">
+                    <i  class="fab fa-instagram" > </i>
+                </a>
+            </li>
+
+            <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-1" href="https://www.linkedin.com/in/aman-mandal-1b91031a6/" target="blank">
+                    <i  class="fab fa-linkedin" > </i>
+                </a>
+            </li>
+         </div>
+    <!-- Footer Elements -->
+    
+    <!-- Copyright -->
+    <div class="list-unstyled list-inline text-center" >
+        <li class="list-inline-item">
+    <p>Copyright © 2020 All rights reserved | Made with <i  class="fas fa-heart" style="color: red;" > </i> by Aman</p>
+</li>
+</div>
+
+
+</footer>
+<!-- Footer -->
+</body>
+</html>
